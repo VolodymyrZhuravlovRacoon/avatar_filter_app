@@ -47,7 +47,7 @@ class AvatarListScreen extends StatelessWidget {
             children: [
               Visibility(
                 visible: provider.filters.isAnyFilterActive,
-                child: GestureDetector(
+                child: InkWell(
                   onTap: () {
                     provider.resetFilters();
                   },
@@ -121,7 +121,7 @@ class AvatarListScreen extends StatelessWidget {
   }) {
     final bool isActive = value != null;
 
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         showModalBottomSheet(
           context: context,
@@ -269,7 +269,7 @@ class AvatarListScreen extends StatelessWidget {
                   fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 24),
-            GestureDetector(
+            InkWell(
               onTap: onReset,
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
