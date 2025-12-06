@@ -32,6 +32,7 @@ class AvatarProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   List<Avatar> get filteredAvatars => _filteredAvatars;
   ActiveFilters get filters => _filters;
+  int get filteredAvatarsCount => _filteredAvatars.length;
 
   Future<void> fetchAvatars() async {
     _isLoading = true;
@@ -43,9 +44,15 @@ class AvatarProvider with ChangeNotifier {
   }
 
   void updateFilter({String? gender, String? age, String? pose}) {
-    if (gender != null) _filters.gender = gender == '' ? null : gender;
-    if (age != null) _filters.age = age == '' ? null : age;
-    if (pose != null) _filters.pose = pose == '' ? null : pose;
+    String? _updateValue(String? currentValue, String? newValue) {
+      if (newValue == '') return null;
+      return newValue ?? currentValue;
+    }
+
+    _filters.gender = _updateValue(_filters.gender, gender);
+    _filters.age = _updateValue(_filters.age, age);
+    _filters.pose = _updateValue(_filters.pose, pose);
+
     _applyFilters();
   }
 
@@ -69,7 +76,7 @@ class AvatarProvider with ChangeNotifier {
   String _getAgeGroup(int age) {
     if (age >= 18 && age <= 25) return 'Young adults';
     if (age > 25 && age <= 40) return 'Adults';
-    if (age > 40 && age <= 65) return 'Middle-aged Adults';
+    if (age > 40 && age <= 55) return 'Middle-aged';
     return 'Older adults';
   }
 }

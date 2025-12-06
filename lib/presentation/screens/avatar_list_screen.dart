@@ -69,7 +69,7 @@ class AvatarListScreen extends StatelessWidget {
               ),
               _buildFilterChip(
                 context,
-                counts: provider.filteredAvatars.length,
+                counts: provider.filteredAvatarsCount,
                 label: 'Gender',
                 value: provider.filters.gender,
                 options: ['Male', 'Female'],
@@ -78,7 +78,7 @@ class AvatarListScreen extends StatelessWidget {
               const SizedBox(width: 8),
               _buildFilterChip(
                 context,
-                counts: provider.filteredAvatars.length,
+                counts: provider.filteredAvatarsCount,
                 label: 'Age',
                 value: provider.filters.age,
                 options: [
@@ -92,7 +92,7 @@ class AvatarListScreen extends StatelessWidget {
               const SizedBox(width: 8),
               _buildFilterChip(
                 context,
-                counts: provider.filteredAvatars.length,
+                counts: provider.filteredAvatarsCount,
                 label: 'Pose',
                 value: provider.filters.pose,
                 options: [
@@ -137,7 +137,7 @@ class AvatarListScreen extends StatelessWidget {
       },
       child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          height: 40,
+          height: 36,
           padding: const EdgeInsets.only(left: 12, right: 8),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
